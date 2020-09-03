@@ -1,0 +1,15 @@
+{
+  "CHOOSE_LANGUAGE_LABEL": "Wybierz język",
+  "SAVE_PROFILE_MESSAGE": "Zapisywanie profilu ...",
+  "LOAD_PROFILE_MESSAGE": "Ładowanie profilu ...",
+  "ERROR_PREFIX": "Błąd!",
+  "PROFILE_TITLE": "Profil",
+  "USER_NAME_LABEL": "Nazwa Użytkownika:",
+  "EMAIL_LABEL": "E-mail",
+  "FIRST_NAME_LABEL": "Imię:",
+  "LAST_NAME_LABEL": "Nazwisko:",
+  "SUBMIT_BUTTON_LABEL": "Zapisać",
+  "EMAIL_GENERATION_ERROR": "Błąd podczas generowania wiadomości e-mail",
+  "NAME_GENERATION_ERROR": "Błędna nazwa",
+  "MISSING_PROFILE_ERROR": "Nie znaleziono profilu"
+}

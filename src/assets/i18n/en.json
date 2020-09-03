@@ -1,0 +1,15 @@
+{
+  "CHOOSE_LANGUAGE_LABEL": "Choose language",
+  "SAVE_PROFILE_MESSAGE": "Saving Profile...",
+  "LOAD_PROFILE_MESSAGE": "Loading profile...",
+  "ERROR_PREFIX": "Error!",
+  "PROFILE_TITLE": "Profile",
+  "USER_NAME_LABEL": "Username:",
+  "EMAIL_LABEL": "Email",
+  "FIRST_NAME_LABEL": "First Name:",
+  "LAST_NAME_LABEL": "Last Name:",
+  "SUBMIT_BUTTON_LABEL": "Save",
+  "EMAIL_GENERATION_ERROR": "Error on email generation",
+  "NAME_GENERATION_ERROR": "Invalid name",
+  "MISSING_PROFILE_ERROR": "Profile not found"
+}

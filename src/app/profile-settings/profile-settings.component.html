@@ -1,0 +1,47 @@
+<div>
+	<h1> {{ "PROFILE_TITLE" |translate}} </h1>
+
+	<div>
+		<p> {{"USER_NAME_LABEL"|translate}} {{userProfile.userName}} </p>
+	</div>
+
+	<div>
+		<p> {{"EMAIL_LABEL"|translate}} {{userProfile.email}} </p>
+	</div>
+
+	<div>
+		<form [formGroup]="profileForm" (ngSubmit)="saveProfile()" autocomplete="off">
+			<div class="form-group">
+				<label for="profileFirstName">
+          {{"FIRST_NAME_LABEL"|translate}} 
+        </label>
+				<input formControlName="firstName"
+          id="profileFirstName"
+          type="text"
+          class="form-control form-control-lg"/>
+			</div>
+
+				<div class="form-group">
+					<label for="profileLastName">
+          {{"LAST_NAME_LABEL"|translate}} 
+        </label>
+					<input formControlName="lastName"
+          id="profileLastName"
+          type="text"
+          class="form-control form-control-lg"/>
+			</div>
+
+					<div class="form-group">
+						<button [disabled]="isLoading || profileForm.invalid" type="submit" class="btn btn-primary btn-lg btn-block submit-btn">{{"SUBMIT_BUTTON_LABEL"|translate}}</button>
+					</div>
+
+					<p *ngIf="isLoading; else profileErrorMessage"> {{formStatus|translate}} </p>
+					<ng-template #profileErrorMessage>
+						<p *ngIf="hasError && profileForm.pristine">
+							{{"ERROR_PREFIX"|translate}} {{profileError|translate}}
+						</p>
+
+					</ng-template>
+		</form>
+	</div>
+</div>
