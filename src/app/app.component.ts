@@ -19,9 +19,10 @@ export class AppComponent {
     translateService.addLangs(LANGUAGES_SUPPORTED);
     translateService.setDefaultLang(SYSTEM_DEFAULT_LANGUAGE);
     this.connectionTypes = ["Promises", "Observables"];
+    //ReadMe
     // please change this below value to `this.connectionTypes[1]` to test functionality via with Observables
     // `this.connectionTypes[0]===Promises` and `this.connectionTypes[1]===Observables`
-    // i wasn't sure what was the expectation either to do the project with Promises or observables, so i did with both options
+    // i wasn't sure what was the expectation, either to do the project with Promises or observables, so i did with both options
     // thanks for this experience
     this.currentConnection = this.connectionTypes[0];
     this.useObservable = this.currentConnection === this.connectionTypes[1];
