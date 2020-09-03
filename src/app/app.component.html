@@ -18,19 +18,7 @@
 
 <div>
 	<label for="connectionTypeSelector">
-    {{"CHOOSE_LANGUAGE_LABEL"|translate}}
-		<select
-    class="form-control"
-    id="languageSelector"
-    #currentConnectionType
-    (change)="changeConnection(currentConnectionType.value)"
-    [disabled]="isLoading">
-			<option *ngFor="let connectionType of connectionTypes" 
-      [value]="connectionType"
-      [selected]="connectionType === currentConnection">
-      {{ connectionType }}
-    </option>
-		</select>
+    Communicatiing to Service via: {{currentConnection}}
 	</label>
 </div>
 

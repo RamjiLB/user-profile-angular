@@ -11,7 +11,7 @@ import { ProfileService } from "../services/profile.service";
 import { IProfile, IProfileForm } from "../models/profile";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { TranslateService } from "@ngx-translate/core";
-import { from, Observable, Subject, defer } from "rxjs";
+import { from, Observable, Subject, defer, throwError } from "rxjs";
 import {
   catchError,
   map,
@@ -204,29 +204,28 @@ export class ProfileSettingsComponent implements OnInit, OnChanges, OnDestroy {
   //<------------------------------------------------------------------>
   // same application implemented with observables instead of promises
   //<------------------------------------------------------------------>
+  private getProfileUserAsObservable(): Observable<IProfile> {
+    return defer(() => from(this.profileService.getProfileUser()));
+  }
+
   private fetchProfileObservable(): void {
-    console.log("fetch user profile with observables");
-    from(this.profileService.getProfileUser())
-      .pipe(
-        flatMap(() => defer(() => this.profileService.getProfileUser())),
-        retryWhen(error => error.pipe(delay(3000)))
-      )
-      .subscribe(userProfileData => {
-        this.userProfile = userProfileData;
+    const getProfileUser$ = this.getProfileUserAsObservable();
 
-        this.storeFormValue(userProfileData);
+    getProfileUser$.pipe(retry()).subscribe(userProfileData => {
+      this.userProfile = userProfileData;
 
-        this.profileForm.patchValue(this.initialFormValues);
+      this.storeFormValue(userProfileData);
 
-        this.enableForm();
-      });
+      this.profileForm.patchValue(this.initialFormValues);
+
+      this.enableForm();
+    });
   }
 
   private submitUserProfileObservable(
     profileRequestParams: IProfile,
     formData: IProfileForm
   ): void {
-    console.log("save user profile with observables");
     this.updateUserNameObservable(profileRequestParams)
       .pipe(
         takeUntil(this.unsubscribe),
@@ -237,7 +236,7 @@ export class ProfileSettingsComponent implements OnInit, OnChanges, OnDestroy {
         catchError(err => {
           this.handleSubmitProfileError(formData, err);
 
-          return Observable.throw(err);
+          return throwError(err);
         })
       )
       .subscribe(updatedProfile => {

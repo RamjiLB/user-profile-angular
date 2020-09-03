@@ -10,7 +10,6 @@ export class ProfileService {
   }
 
   getProfileUser(): Promise<IProfile> {
-    console.log("get user profile");
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (Math.round(Math.random())) {
@@ -20,10 +19,8 @@ export class ProfileService {
             userName: "michael.collins",
             age: 30
           };
-          console.log("Received profile");
           resolve(this.userProfile);
         } else {
-          console.log("Error fetching profile");
           reject({ error: "MISSING_PROFILE_ERROR" });
         }
       }, Math.random() * 500);
@@ -38,7 +35,6 @@ export class ProfileService {
 
           resolve(this.userProfile);
         } else {
-          console.log("Set Username error");
           reject({ error: "NAME_GENERATION_ERROR" });
         }
       }, Math.random() * 500);
@@ -55,7 +51,6 @@ export class ProfileService {
 
           resolve(this.userProfile);
         } else {
-          console.log("Set Useremail error");
           reject({ error: "EMAIL_GENERATION_ERROR" });
         }
       }, Math.random() * 500);
@@ -69,7 +64,7 @@ export class ProfileService {
     const lastName: string = this.removeWhiteSpaces(
       userProfileFormData.lastName
     );
- 
+
     return {
       userName: `${firstName}.${lastName}`,
       firstName,
